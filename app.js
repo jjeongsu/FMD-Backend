@@ -12,7 +12,11 @@ app.get('/', (req, res) => {
 // const indexRouter = require('./index'); // = require('./routes/index')
 const userRouter = require('./routes/user');
 // app.use('/index', indexRouter);
+app.use(express.json());
+app.use(express.urlencoded( {extended : false } ));
+
 app.use('/user', userRouter);
+
 
 app.get('/db', (req, res) => {
     connection.query('SELECT * FROM user', (error, rows) => {
